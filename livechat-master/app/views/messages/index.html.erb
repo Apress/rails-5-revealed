@@ -1,0 +1,15 @@
+<h1>Chat room</h1>
+
+<p>Your name: <%= current_user.name %></p>
+
+<h2>Messages</h2>
+<%= form_for :message, remote: true do |form| %>
+  <%= form.text_field :body %>
+  <%= form.submit 'Send Message' %>
+<% end %>
+
+<ul id="messages">
+<% @messages.each do |message| %>
+  <%= render partial: 'message', object: message %>
+<% end %>
+</ul>
